@@ -2,22 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HelloCode : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
+    public float speed= 8f; 
+    private Rigidbody bulletRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        string characterName = "라라";
-        char bloodType = 'A';
-        int age = 17;
-        float height = 168.3f;
-        bool isFemale = true;
+        bulletRigidbody=GetComponent<Rigidbody>();
 
-        Debug.Log("캐릭터 이름 : " + characterName);
-        Debug.Log("혈액형 : "+ bloodType);
-        Debug.Log("나이 : "+ age);
-        Debug.Log("키 : "+ height);
-        Debug.Log("여성인가? : "+ isFemale);
+        bulletRigidbody.velocity=transform.forward*speed;
+
+        Destroy(gameObject, 3f);
     }
 
+    void OntriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerController playerController = other.GetComponent<PlayerController>();
+
+            if (playerController != null)
+            {
+                playerController.Die();
+            }
+        }
+    }
+   
 }
