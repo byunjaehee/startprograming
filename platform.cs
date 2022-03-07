@@ -17,10 +17,10 @@ public class BackgroundLoop : MonoBehaviour {
         {
             Reposition();
         }
-        // 현재 위치가 원점에서 왼쪽으로 width 이상 이동했을때 위치를 리셋
+
     }
 
-    // 위치를 리셋하는 메서드
+  
     private void Reposition() {
 
         Vector2 offset= new Vector2(width*2f,0);
