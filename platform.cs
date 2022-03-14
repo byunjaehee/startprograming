@@ -20,7 +20,7 @@ public class BackgroundLoop : MonoBehaviour {
 
     }
 
-  
+  //reposition
     private void Reposition() {
 
         Vector2 offset= new Vector2(width*2f,0);
